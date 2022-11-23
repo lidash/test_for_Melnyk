@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  storage_id: 1
+  region_id: 1
+  full_name: MyString
+  role_id: 1
+
+two:
+  storage_id: 1
+  region_id: 1
+  full_name: MyString
+  role_id: 1
