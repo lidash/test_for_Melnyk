@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_23_102746) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_04_201846) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -21,7 +21,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_23_102746) do
   end
 
   create_table "storages", force: :cascade do |t|
-    t.integer "region_id"
+    t.integer "region_id", null: false
     t.string "orientation"
     t.string "name"
     t.string "section"
@@ -31,12 +31,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_23_102746) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.integer "storage_id"
-    t.integer "region_id"
     t.string "full_name"
-    t.integer "role_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "region_id"
+    t.bigint "storage_id", null: false
+    t.bigint "role_id", null: false
+    t.index ["role_id"], name: "index_users_on_role_id"
+    t.index ["storage_id"], name: "index_users_on_storage_id"
   end
 
+  add_foreign_key "users", "roles"
+  add_foreign_key "users", "storages"
 end

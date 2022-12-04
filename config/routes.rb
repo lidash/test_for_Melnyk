@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  resources :storages
   resources :users
+  resources :storages
   resources :roles
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
